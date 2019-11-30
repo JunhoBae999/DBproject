@@ -18,13 +18,21 @@
         <th class="tg-0lax">{{i.music_composer}}</th>
         <th class="tg-0lax"><img src = "{{i.music_image.url}}" height :100px></th>
         <th class="tg-0lax"><a href = "{% url 'detail' i.music_no %}" >자세히 보기</a></th>
-        <th class="tg-0lax">
-        <a href ="{% url 'create' i.music_no %}">리스트에 추가하기</a>
-        </form>
-        </th>
+        {% if membership.yearly != 0 and membership.monthly != 0 %}
+        <th class="tg-0lax"><a href="{% url 'down' i.music_no %}">download</a></th>
+        {% else %}            
+        <th class="tg-0lax">Join our membership!</th>
+        <th class="tg-0lax"><a href='{% url "membershipy"  %}'>1.yearly</a></th>
+        <th class="tg-0lax"><a href='{% url "membershipm"  %}'>2.monthly</a></th>
+
+        
       </tr>
+ {% endif %}     
 {% endfor %}
 </table>
 {% endblock %}
 
 
+          <tr>
+
+          </tr>

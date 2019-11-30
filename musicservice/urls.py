@@ -25,8 +25,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mainservice.views.home,name='home'),
     path('mainservice/mypage',mainservice.views.mypage,name='mypage'),
-    path('account/',include('account.urls')),
+    path('accounts/',include('accounts.urls')),
     path('mainservice/search',mainservice.views.search,name='search'),
     path('mainservice/<int:music_no>',mainservice.views.detail,name='detail'),
     path('mainservice/create/<int:music_no>',mainservice.views.create,name='create'),
+    path('mainservice/signout',mainservice.views.signout,name='signout'),
+    path('mainservice/memberhipy',mainservice.views.membershipy, name='membershipy'),
+    path('mainservice/membershipm',mainservice.views.membershipm,name='membershipm'),
+    path('mainservice/search/down/<int:music_no>',mainservice.views.down,name='down'),
 ] +static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

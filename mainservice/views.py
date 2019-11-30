@@ -1,8 +1,10 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.auth.models import User
-from account.models import Music_user
+from accounts.models import Music_user,User_membership
 from django.views.generic.detail import DetailView
 from .models import Music,Play_list
+from django.http import FileResponse
+import os
 #모델도 임포트 해줘야합니다
 def home(request) :
    return render(request,'home.html')
@@ -14,9 +16,11 @@ def home(request) :
 
 def mypage(request) :
     mymusic = Play_list.objects.all()
-    return render(request,'mypage.html',{'mymusic':mymusic})
+    membership = User_membership.objects.get(user=Music_user.objects.get(user=request.user))
+    return render(request,'mypage.html',{'mymusic':mymusic},{'membership':membership})
 
 def search(request):
+    membership = User_membership.objects.get(user=Music_user.objects.get(user=request.user))
     all_music = Music.objects.all()
     kewword = request.GET['search_content']
     result = []
@@ -24,7 +28,7 @@ def search(request):
         result.append(object)
     for object in all_music.filter(music_singer=kewword):
         result.append(object)   
-    return render(request,'search.html',{'result':result}) 
+    return render(request,'search.html',{'result':result},{'memberhsip':membership}) 
 
 
 def detail(request,music_no):
@@ -40,7 +44,35 @@ def create(request,music_no):
     user_list.music=selected_music
     user_list.save()
     return render(request,'mypage.html')
+
+def signout(request,user):
+    request.user.delete()
+    return render(request,'home.html')
+
+def membershipy(request):
+    user_membership = User_membership()
+    user_membership.username = str(request.user.username)
+    user_membership.user = Music_user.objects.get(user = request.user)
+    user_membership.yearly = 1
+    user_membership.save()
+    return redirect('mypage')
+
+def membershipm(request,):   
+    user_membership = User_membership()
+    user_membership.username = str(request.user.username)
+    user_membership.user = Music_user.objects.get(user = request.user)
+    user_membership.monthly = 1
+    user_membership.save()
+    return redirect('mypage')
+
+####다운로드어케하지,,
+def down(request,music_no) :
+    item = get_object_or_404(Music,pk=music_no)
+    downloaditem = item.music_file
+    response = FileResponse(downloaditem)
+    return response
     
+
 
 
 

@@ -47,22 +47,20 @@
           </tr>
           {% endif %}
           {% endfor %}
+
+          <tr>
+            {% if membership.yearly != 0 and membership.monthly != 0 %}
+            <th class="tg-0lax">You joined our memberhsip</th>
+            {% else %}            
+            <th class="tg-0lax">Join our membership!</th>
+            <th class="tg-0lax"><a href='{% url "membershipy"  %}'>1.yearly</a></th>
+            <th class="tg-0lax"><a href='{% url "membershipm"  %}'>2.monthly</a></th>
+          </tr>
+          
     </table>
+      
 
-
-
-    </div>
-
-
-
-{% if user_membership is not NULL%}
-<div class="card">
-    <div class="card-body">
-        <h1  style="color:white">{{user.music_user.user_membership}}</h1>
-    </div>
-  </div>
-
-{% endif %}
+    {% endif %}
 </div>
 </table>
 {% endblock %}
