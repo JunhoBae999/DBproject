@@ -19,7 +19,7 @@
         <th class="tg-0lax"><img src = "{{i.music_image.url}}" height :100px></th>
         <th class="tg-0lax"><a href = "{% url 'detail' i.music_no %}" >자세히 보기</a></th>
         <th class="tg-0lax">
-        <a href ="{% url 'detail' i.music_no %}">리스트에 추가하기</a>
+        <a href ="{% url 'create' i.music_no %}">리스트에 추가하기</a>
         </form>
         </th>
       </tr>

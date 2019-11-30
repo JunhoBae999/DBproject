@@ -28,4 +28,5 @@ urlpatterns = [
     path('account/',include('account.urls')),
     path('mainservice/search',mainservice.views.search,name='search'),
     path('mainservice/<int:music_no>',mainservice.views.detail,name='detail'),
+    path('mainservice/create/<int:music_no>',mainservice.views.create,name='create'),
 ] +static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
