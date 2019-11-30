@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<h1> My page </h1>
+
+<div class="card">
+    <div class="card-body"> 
+    <h1  style="color:black">Name : {{user.username}}</h1>
+    </div>
+  </div>
+<br>
+
+<div class="card">
+    <div class="card-body">
+        <h1  style="color:black">Email : {{user.music_user.user_email}}</h1>
+    </div>
+  </div>
+<br>
+
+<div class="card">
+    <div class="card-body">
+        <h1  style="color:black">Phone Number : {{user.music_user.user_phonenumber}}</h1>
+    </div>
+  </div>
+<br>
+
+<div class="card">
+    <div class="card-body">
+        <h1  style="color:black">Address : {{user.music_user.user_address}}</h1>
+    </div>
+  </div>
+<br>
+
+{% if user_membership is not NULL%}
+<div class="card">
+    <div class="card-body">
+        <h1  style="color:black">{{user.music_user.user_membership}}</h1>
+    </div>
+  </div>
+<br>
+{% endif %}
+
+{% endblock %}
+

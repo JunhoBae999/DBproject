@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<table class="tg">
+<tr>
+        <th class="tg-0lax">제목</th>
+        <th class="tg-0lax">앨범</th>
+        <th class="tg-0lax">가수</th>
+        <th class="tg-0lax">작곡가</th>
+        <th class="tg-0lax">자켓</th>
+        <th class="tg-0lax"></th>
+</tr>
+{% for i in result %}
+<tr>
+        <th class="tg-0lax">{{i.music_title}}</th>
+        <th class="tg-0lax">{{i.music_album}}</th>
+        <th class="tg-0lax">{{i.music_singer}}</th>
+        <th class="tg-0lax">{{i.music_composer}}</th>
+        <th class="tg-0lax"><img src = "{{i.music_image.url}}" height :100px></th>
+        <th class="tg-0lax"><a href = "{% url 'detail' i.music_no %}" >자세히 보기</a></th>
+        <th class="tg-0lax">
+        <a href ="{% url 'detail' i.music_no %}">리스트에 추가하기</a>
+        </form>
+        </th>
+      </tr>
+{% endfor %}
+</table>
+{% endblock %}
+
+

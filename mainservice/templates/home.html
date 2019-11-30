@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Junho's Music</h1>
+    <p class="lead">Search and download the music. you can list up your favorite songs and we will recomend you a proper song according to your playlist. 
+      if you join our memebership, You can enjoy our music cheaper than original price!
+    </p>
+    <form action="{% url 'search'%}">
+      Music :
+      <br>
+      <input name="search_content" type="text" value="">
+      <br>
+      <br>
+      <input class="btn btn-primary" type="submit" value="Music">
+  </form>
+    
+  </main>
+
+
+{% endblock %}

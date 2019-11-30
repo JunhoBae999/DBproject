@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<h1>Sign Up</h1>
+<br>
+<br>
+<form method = "POST" action = "{% url 'signup'%}">
+    {% csrf_token %}
+    <table class="tg">
+            <tr>
+                <th class="tg-0lax">UserID : </th>
+                <th class="tg-0lax"><input name = "userid" type = "text" value = ""></th>
+            </tr>
+            <tr>
+                    <th class="tg-0lax"> Password :</th>
+                    <th class="tg-0lax"><input name = "password1" type = "password" value =""></th>
+            </tr>
+            <tr>
+                    <th class="tg-0lax"> Confirm Password :</th>
+                    <th class="tg-0lax"><input name = "password2" type = "password" value =""></th>
+            </tr>
+            <tr>
+                    <th class="tg-0lax"> User Name :</th>
+                    <th class="tg-0lax"><input name = "username" type = "text" value = ""></th>
+            </tr>
+            <tr>
+                    <th class="tg-0lax"> Email :</th>
+                    <th class="tg-0lax"> <input name = "email" type = "email" value = ""></th>
+            </tr>
+      
+            <tr>
+                    <th class="tg-0lax"> address :</th>
+                    <th class="tg-0lax"> <input name = "address" type = "text" value =""></th>
+            </tr>
+            <tr>
+                    <th class="tg-0lax">    phone number : </th>
+                    <th class="tg-0lax">  <input name = "phonenumber" type = "text" value = ""></th>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <input class = "btn btn-primary" type = "submit" value = "Sign Up">
+</form>
+{% endblock  %}

@@ -1,0 +1,41 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel = "stylesheet" href = "{% static 'css/cover.css' %}">
+  <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;text-align: center;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+  </head>
+  <body class = "text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand" height: 100vh>Junho's Music</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="{% url 'home' %}">Home</a>
+            {% if user.is_authenticated %}
+            <a class="nav-link" href="#">Welcome! {{user.username}}</a>
+            <a class="nav-link" href="{% url 'mypage' %}">Mypage</a>
+            <a class="nav-link" href="{% url 'logout' %}">logout</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'signup' %}">Signin</a>
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            {% endif %}
+          </nav>
+        </div>
+      </header>
+{% block contents %}
+
+{% endblock %}
+<footer class="mastfoot mt-auto">
+    <div class="inner">
+      This site is for the DataBase Project. MusicService
+    </div>
+  </footer>
+</div>
+</div>
+</body>
